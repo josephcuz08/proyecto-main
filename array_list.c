@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "array_list.h"
 
-// Crear lista
+
 ArrayList* arraylist_create(int capacity) {
 	ArrayList *list = (ArrayList*) malloc(sizeof(ArrayList));
 	list->data = (void**) malloc(sizeof(void*) * capacity);
@@ -11,13 +11,13 @@ ArrayList* arraylist_create(int capacity) {
 	return list;
 }
 
-// Aumentar capacidad
+
 void arraylist_resize(ArrayList *list) {
 	list->capacity *= 2;
 	list->data = (void*) realloc(list->data, sizeof(void) * list->capacity);
 }
 
-// Agregar al final
+
 void arraylist_add(ArrayList *list, void *element) {
 	if (list->size == list->capacity) {
 		arraylist_resize(list);
@@ -26,7 +26,7 @@ void arraylist_add(ArrayList *list, void *element) {
 	list->size++;
 }
 
-// Insertar en posición
+
 void arraylist_insert(ArrayList *list, int index, void *element) {
 	if (index < 0 || index > list->size) return;
 	
@@ -42,7 +42,7 @@ void arraylist_insert(ArrayList *list, int index, void *element) {
 	list->size++;
 }
 
-// Obtener elemento
+
 void* arraylist_get(ArrayList *list, int index) {
 	if (index < 0 || index >= list->size) return NULL;
 	return list->data[index];
